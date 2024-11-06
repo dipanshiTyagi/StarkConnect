@@ -5,8 +5,10 @@ import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoute from "./Routes/user.route.js";
 import companyRoute from "./Routes/company.route.js";
-
+import jobRoute from "./Routes/job.route.js";
 dotenv.config({});
+// dotenv.config();
+// console.log(process.env.MONGO_URI);  // This should log your MongoDB URI
 
 const app = express();
 
@@ -34,6 +36,7 @@ const PORT = process.env.PORT || 3000;
 //api's
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
+app.use("/api/v1/company", jobRoute);
 
 
 
