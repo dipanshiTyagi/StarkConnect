@@ -21,7 +21,7 @@ export const postJob = async (req, res) => {
             console.log(error);
         }
     }
-//student
+// for student
     export const getAllJobs = async (req, res) => {
         try {
             const keyword = req.query.keyword || "";
