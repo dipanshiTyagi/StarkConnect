@@ -1,10 +1,10 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
 export const register = async(req, res) => {
     try{
         const {fullname, email, phoneNumber, password, role} = req.body;
+        console.log(fullname, email, phoneNumber, password, role);
         if (!fullname || !email || !phoneNumber || !password || !role){
             return res.status(400).json({
                 message:"Something is missing",
@@ -18,7 +18,7 @@ export const register = async(req, res) => {
                 success:false,
             })
         }
-        const hashedPassword = await bcrypt.hash(passsword, 8);
+        const hashedPassword = await bcrypt.hash(password, 8);
 
         await User.create({
             fullname,

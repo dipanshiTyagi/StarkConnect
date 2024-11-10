@@ -18,8 +18,26 @@ const changeEventHandler = (e) => {
 }
 const submitHandler = async (e) => {
   e.preventDefault();
-  console.log(input);
+
+
+  try {
+      dispatch(setLoading(true));
+      const res = await axios.post(`${USER_API_END_POINT}/login`, formData, {
+          headers: { 'Content-Type': "application/json" },
+          withCredentials: true,
+      });
+      if (res.data.success) {
+          navigate("/");
+          toast.success(res.data.message);
+      }
+  } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+  } finally{
+      dispatch(setLoading(false));
+  }
 }
+
   return (
 
     <>
